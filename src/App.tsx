@@ -1,16 +1,14 @@
 import "./App.css";
 import React, { Suspense, useEffect } from "react";
 const Chip = React.lazy(() => import("app2/Chip"));
-const components = React.lazy(() =>
-  import("app2/components").then((res) => res)
-);
-const { message } = components as any;
+const components = React.lazy(() => import("app2/components")) as any;
 function App() {
   useEffect(() => {
     import("app2/components")
       .then((res: any) => {
-        console.log(`components-res`, res.message.info);
-        res.message.error("sssss");
+        setTimeout(() => {
+          res.message.success("加载remote项目成功，我是来自remote的message");
+        }, 500);
       })
       .catch((err) => {
         console.log(`components-err`, err);
@@ -19,13 +17,6 @@ function App() {
   return (
     <div className="App">
       <Suspense fallback={"loading..."}>
-        <button
-          onClick={() => {
-            message.error("sssss");
-          }}
-        >
-          点我
-        </button>
         <Chip />
       </Suspense>
     </div>
