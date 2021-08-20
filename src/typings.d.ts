@@ -6,8 +6,7 @@ declare module "app2/Chip" {
   const Chip: () => JSX.Element;
   export default Chip;
 }
-
-declare module "app2" {
-  const classes: { readonly [key: string]: string };
-  export default classes;
+declare module "app2/components" {
+  const componentscomponents: { readonly [key: any]: any };
+  export default components;
 }

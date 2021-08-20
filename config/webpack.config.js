@@ -30,6 +30,7 @@ const createEnvironmentHash = require("./webpack/persistentCache/createEnvironme
 const ExternalTemplateRemotesPlugin = require("external-remotes-plugin");
 // Source maps are resource heavy and can cause out of memory issue for large source files.
 const shouldUseSourceMap = process.env.GENERATE_SOURCEMAP !== "false";
+const { dependencies: externals } = require("../package.json");
 
 const reactRefreshRuntimeEntry = require.resolve("react-refresh/runtime");
 const reactRefreshWebpackPluginRuntimeEntry = require.resolve(
@@ -548,12 +549,12 @@ module.exports = function (webpackEnv) {
           react: {
             singleton: true,
             eager: true,
-            requiredVersion: "17",
+            requiredVersion: externals.react,
           },
           "react-dom": {
             singleton: true,
             eager: true,
-            requiredVersion: "17",
+            requiredVersion: externals["react-dom"],
           },
         },
       }),
