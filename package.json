@@ -88,5 +88,8 @@
     "presets": [
       "react-app"
     ]
+  },
+  "devDependencies": {
+    "external-remotes-plugin": "^1.0.0"
   }
 }
